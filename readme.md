@@ -1,8 +1,5 @@
 Expense Management System
 
-- **Name:** [OLADEJO SHITTU ABIODUN]
-- **Phone Number:** [08168124112]
-- **Email:** [oladejoshittu2020@gmail.com]
 
 ## Project Overview
 The Expense Management System is designed to streamline the process of tracking and managing expenses within an organization. It allows users to record, view, and manage expenses effectively, providing a clear summary of financial activities over time. The system includes features like expense tracking, report generation, and a summary of total expenses.
@@ -41,8 +38,7 @@ The Expense Management System is designed to streamline the process of tracking 
 ## Contributing
 If you would like to contribute to the project, please feel free to make a repository and make your changes.
 
-## Contact Information
-For any inquiries or support, please contact: 08168124112
+
 
 
 
