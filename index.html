@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- this is the heading section -->
+ <section id="heading" class=" bg-gray-900 px-4 md:mt-4 md:px-6 md:w-[95%] mx-auto">
+  <h2 id="company-name" class=" text-white text-3xl md:text-5xl py-4 md:py-8 uppercase">ACUSA EXPENSE TRACKER</h2>
+ </section>
+
+ <!-- this is the display section -->
+ <section id="display" class="mt-9 mb-9">
+  <div class="flex flex-col md:flex-row shadow-md w-full md:max-w-3xl mx-auto px-4 md:px-9 py-4">
+    <!-- Add Budget and Total Remaining Budget Section -->
+    <div class="w-full md:w-1/2 px-2">
+      <div class="h-64 md:h-full relative flex justify-center items-center">
+        <!-- Adjusted Image with Responsive Sizing -->
+        <img src="Img/remaining buget.svg" alt="Remaining Budget Image" class="w-60 md:w-80 h-auto">
+        <!-- Total Remaining Budget Display -->
+        <div class="total-remaining-budget absolute flex flex-col items-center justify-center inset-0 text-center">
+          <p class="text-sm md:text-lg lg:text-xl font-thin">Remaining Budget</p>
+          <h2 id="remaining-budget" class="text-sm md:text-lg lg:text-xl text-green-500 font-bold"></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense Section -->
+    <div class="w-full md:w-1/2 md:ml-6">
+      <div class="input-container mt-6">
+        <label for="budget-input" class="text-center font-bold text-lg md:text-2xl block py-2 md:py-4 text-white  bg-gray-900">BUDGET</label>
+        <input type="number" id="budget-input" required class="block w-full text-center shadow-xl text-lg md:text-xl h-12 md:h-16 outline-none border-gray-900  rounded-sm placeholder-lg" placeholder="Please input a fixed budget">
+        <button id="add-budget-btn" class="block bg-blue-600 hover:bg-blue-500 w-full h-12 md:h-14 text-white text-center text-lg md:text-xl rounded-sm">Add Budget</button>
+      </div>
+
+      <div class="input-container mt-12 rounded-lg">
+        <p class="text-center font-bold text-lg md:text-2xl block py-2 md:py-5 text-white  bg-gray-900">EXPENSE</p>
+        <input type="number" id="amount-spent" class="block w-full text-center shadow-xl text-lg md:text-xl h-12 md:h-16 outline-none border-gray-900   rounded-sm placeholder-lg" placeholder="Please enter amount spent" disabled required>
+        <input type="date" id="date" class="block w-full text-center shadow-xl text-lg md:text-xl h-12 md:h-16 outline-none border-gray-900   rounded-sm placeholder-lg" placeholder="Please enter date" disabled required>
+        <input type="text" id="description" class="block w-full text-center shadow-xl text-lg md:text-xl h-12 md:h-16 outline-none border-gray-900  rounded-sm placeholder-lg" placeholder="Please enter expense description" disabled>
+        <button id="add-expense-btn" disabled class="block bg-blue-600 hover:bg-blue-500 w-full h-12 md:h-14 text-white text-center text-lg md:text-xl rounded-sm">Add Expense</button>
+      </div>
+
+    <div class="input-container flex flex-col md:flex-row mt-4 hidden" id="add-to-budget-container">
+        <label for="add-to-budget"  class="sm:text-center">Add to Budget:</label>
+        <input type="number" id="add-to-budget" required class="block w-full text-center bg-gray-200 text-lg md:text-xl h-12 md:h-16 outline-none border-gray-900  rounded-sm placeholder-lg sm:mb-4">
+        <button id="add-to-budget-btn" class=" bg-blue-600 hover:bg-blue-500 rounded-lg text-white p-2 ml-2">Add to Budget</button>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- this is the data section -->
+<section class="">,
+  <h2 id="table-data" class="mt-7 cursor-pointer active:bg-gray-800 text-xl md:text-4xl text-center p-4 h-16  md:pt-5 mb-10 bg-gray-900 text-white w-full md:h-20 ">TABLE DATA</h2>
+  <div class="container mx-auto overflow-auto rounded-lg " id="table">
+    <table id="expense-table" class="w-full border-2 border-slate-300">
+      <thead class="bg-gray-900 text-white border-b-2 rounded-sm h-12 border-gray-400">
+        <tr>
+          <th class="p-4 text-sm font-semibold tracking-wide text-center whitespace-nowrap">Serial Number</th>
+          <th class="p-4 text-sm font-semibold tracking-wide text-center">Date</th>
+          <th class="p-4 text-sm font-semibold tracking-wide text-center">Amount Spent</th>
+          <th class="p-4 text-sm font-semibold tracking-wide text-center">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Expense items will be added here dynamically -->
+      </tbody>
+      <tfoot class="bg-gray-900 text-white w-full">
+        <tr class="text-center">
+          <td colspan="2" class="p-4 text-sm font-semibold ">Total Amount Spent:</td>     
+          <td colspan="2" id="total-amount-spent" class="p-4 text-sm font-semibold "></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<div class="footer mt-10 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-10">
+  <button id="clear-expenses-btn" class="bg-blue-600 hover:bg-blue-500 text-white text-lg md:text-xl px-6 py-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Clear All Expenses</button>
+  <button id="show-graph-btn" class="bg-green-600 hover:bg-green-500 text-white text-lg md:text-xl px-6 py-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Show Graph</button>
+  <button id="delete-expense-btn" class="bg-red-600 hover:bg-red-500 text-white text-lg md:text-xl px-6 py-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Delete Expense</button>
+  <button id="previous-expenses-btn"  class="bg-yellow-600 hover:bg-yellow-500 text-white text-lg md:text-xl px-6 py-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">Previous Expenses</button>
+</div>
+
+<div id="chart-container" class="hidden mb-8">
+  <canvas id="expense-chart"></canvas>
+</div>
+<div class="container mx-auto overflow-auto rounded-lg mb-5">
+  <h2 id="previous-expenses-heading" class="text-2xl font-bold mt-4 hidden">Previous Expenses</h2>
+<table class="min-w-full bg-white mt-2 hidden mb-8">
+    <thead>
+        <tr>
+            <th class="py-2 px-4 bg-gray-200">#</th>
+            <th class="py-2 px-4 bg-gray-200">Date</th>
+            <th class="py-2 px-4 bg-gray-200">Amount Spent</th>
+            <th class="py-2 px-4 bg-gray-200">Description</th>
+        </tr>
+    </thead>
+    <tbody id="previous-expense-table"></tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2" class="py-2 px-4 bg-gray-200 text-right">Total:</td>
+            <td id="total-previous-expenses" class="py-2 px-4 bg-gray-200 text-center"></td>
+            <td class="py-2 px-4 bg-gray-200"></td>
+        </tr>
+    </tfoot>
+</table>
+</div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
